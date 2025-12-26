@@ -1,0 +1,23 @@
+database:
+  host: ${DB_HOST}
+  port: ${DB_PORT}
+  name: ${DB_NAME}
+  user: ${DB_USER}
+  password: ${DB_PASSWORD}
+
+data_generation:
+  customers: 1000
+  products: 500
+  orders: 2000
+  start_date: "2023-01-01"
+  end_date: "2024-01-01"
+
+pipeline:
+  batch_size: 500
+  log_level: INFO
+  retry_attempts: 3
+  timeout_seconds: 30
+
+bi_tool:
+  tool: "PowerBI"
+  connection_type: "postgres"

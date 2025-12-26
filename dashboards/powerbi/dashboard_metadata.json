@@ -1,0 +1,29 @@
+{
+  "bi_tool": "Power BI Desktop",
+  "dashboard_name": "E-Commerce Analytics Dashboard",
+  "file_name": "ecommerce_analytics.pbix",
+  "total_pages": 4,
+  "pages": [
+    "Executive Overview",
+    "Product Performance",
+    "Customer Analytics",
+    "Trends & Geography"
+  ],
+  "data_source": "PostgreSQL",
+  "schema_used": "warehouse",
+  "measures_used": [
+    "Total Revenue",
+    "Total Transactions",
+    "Average Order Value",
+    "Total Profit",
+    "Profit Margin"
+  ],
+  "slicers": [
+    "Date",
+    "Category",
+    "State",
+    "Payment Method"
+  ],
+  "created_by": "Neeraja Palla",
+  "created_date": "2025-12-26"
+}

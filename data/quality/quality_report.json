@@ -1,0 +1,37 @@
+{
+    "check_timestamp": "2025-12-27T02:54:31.004426",
+    "checks_performed": {
+        "null_checks": {
+            "status": "passed",
+            "null_violations": 0,
+            "details": {
+                "dim_customers": {},
+                "dim_products": {},
+                "fact_sales": {}
+            }
+        },
+        "duplicate_checks": {
+            "status": "passed",
+            "duplicates_found": 0,
+            "details": {}
+        },
+        "referential_integrity": {
+            "status": "passed",
+            "orphan_records": 0,
+            "details": {
+                "fact_sales_customer_fk": 0,
+                "fact_sales_product_fk": 0
+            }
+        },
+        "range_checks": {
+            "status": "passed",
+            "violations": 0
+        },
+        "data_consistency": {
+            "status": "failed",
+            "mismatches": 173
+        }
+    },
+    "overall_quality_score": 75.0,
+    "quality_grade": "C"
+}
