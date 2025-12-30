@@ -14,9 +14,12 @@ jobs:
       postgres:
         image: postgres:14
         env:
-          POSTGRES_DB: ecommerce_db_test
-          POSTGRES_USER: test_user
-          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+            DB_HOST: postgres
+            DB_PORT: 5432
+            DB_NAME: ecommerce_db_test
+            DB_USER: test_user
+            DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
         ports:
           - 5432:5432
         options: >-
@@ -79,3 +82,4 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: |
           pytest tests/ -v --cov=scripts --cov-report=term
+
