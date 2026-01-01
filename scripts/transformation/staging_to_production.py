@@ -11,7 +11,7 @@ def get_connection():
         host=os.getenv("DB_HOST", "localhost"),
         dbname=os.getenv("DB_NAME", "ecommerce_db"),
         user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASS", "password"),
+        password=os.getenv("DB_PASSWORD", "password"),
         port=os.getenv("DB_PORT", 5432)
     )
 
