@@ -1,0 +1,45 @@
+{
+    "pipeline_execution_id": "PIPE_20251226_220121",
+    "start_time": "2025-12-26T16:31:21.065005+00:00",
+    "steps_executed": {
+        "data_generation": {
+            "status": "success",
+            "duration_seconds": 4.57,
+            "records_processed": null,
+            "retry_attempts": 0
+        },
+        "ingestion": {
+            "status": "success",
+            "duration_seconds": 1.86,
+            "records_processed": null,
+            "retry_attempts": 0
+        },
+        "quality_checks": {
+            "status": "success",
+            "duration_seconds": 0.49,
+            "records_processed": null,
+            "retry_attempts": 0
+        },
+        "warehouse": {
+            "status": "success",
+            "duration_seconds": 12.58,
+            "records_processed": null,
+            "retry_attempts": 0
+        },
+        "analytics": {
+            "status": "success",
+            "duration_seconds": 2.06,
+            "records_processed": null,
+            "retry_attempts": 0
+        }
+    },
+    "data_quality_summary": {
+        "quality_score": null,
+        "critical_issues": 0
+    },
+    "errors": [],
+    "warnings": [],
+    "status": "success",
+    "end_time": "2025-12-26T16:31:42.627743+00:00",
+    "total_duration_seconds": 21.562738
+}

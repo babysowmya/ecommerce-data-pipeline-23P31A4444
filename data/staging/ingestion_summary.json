@@ -1,0 +1,6 @@
+{
+    "ingestion_timestamp": "2025-12-27T02:43:22.412347",
+    "tables_loaded": {},
+    "error": "Execution failed on sql '\n        SELECT\n            name\n        FROM\n            sqlite_master\n        WHERE\n            type IN ('table', 'view')\n            AND name=?;\n        ': syntax error at or near \";\"\nLINE 8:             AND name=?;\n                              ^\n",
+    "total_execution_time_seconds": 1.0
+}
