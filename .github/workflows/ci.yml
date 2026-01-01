@@ -1,8 +1,6 @@
 name: CI Pipeline
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   test:
@@ -24,49 +22,40 @@ jobs:
           --health-retries=5
 
     env:
-      DB_HOST: localhost
+      DB_HOST: 127.0.0.1        # 🔥 IMPORTANT FIX
       DB_PORT: 5432
       DB_NAME: ecommerce_db
       DB_USER: postgres
       DB_PASSWORD: postgres
+      PGPASSWORD: postgres     # 🔥 REQUIRED FOR psql
 
     steps:
-      # 1️⃣ Checkout code
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      # 2️⃣ Setup Python
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: "3.9"
 
-      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4️⃣ Wait for Postgres
       - name: Wait for PostgreSQL
         run: |
           for i in {1..20}; do
-            pg_isready -h localhost -U postgres -d ecommerce_db && break
-            echo "Waiting for PostgreSQL..."
+            pg_isready -h 127.0.0.1 -U postgres -d ecommerce_db && break
+            echo "Waiting for Postgres..."
             sleep 3
           done
 
-      # 5️⃣ Create schemas
       - name: Create schemas
         run: |
-          psql postgresql://postgres:postgres@localhost:5432/ecommerce_db \
-            -f sql/ddl/create_staging_schema.sql
+          psql -h 127.0.0.1 -U postgres -d ecommerce_db -f sql/ddl/create_staging_schema.sql
+          psql -h 127.0.0.1 -U postgres -d ecommerce_db -f sql/ddl/create_production_schema.sql
+          psql -h 127.0.0.1 -U postgres -d ecommerce_db -f sql/ddl/create_warehouse_schema.sql
 
-          psql postgresql://postgres:postgres@localhost:5432/ecommerce_db \
-            -f sql/ddl/create_production_schema.sql
-
-          psql postgresql://postgres:postgres@localhost:5432/ecommerce_db \
-            -f sql/ddl/create_warehouse_schema.sql
-
-      # 6️⃣ Run tests
       - name: Run tests
-        run: pytest tests/ -v
+        run: pytest -v
